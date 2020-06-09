@@ -47,7 +47,7 @@ jobs:
         container-registry-password: ${{ secrets.ganes_acr_password }}
         secret-name: ganesclusterdockerauth
       
-    - uses: azure/k8s-deploy@users/koushdey/addAnnotationsk8sDeploy
+    - uses: azure/k8s-deploy@v1
       with:
         namespace: ganesclusterd44c
         manifests: |
