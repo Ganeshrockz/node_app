@@ -31,8 +31,8 @@ jobs:
     - name: Build and push image to ACR
       id: build-image
       run: |
-        docker build "$GITHUB_WORKSPACE/" -f  "Dockerfile" -t ganesacr.azurecr.io/ganesClusterNodeApp:${{ github.sha }}
-        docker push ganesacr.azurecr.io/ganesClusterNodeApp:${{ github.sha }}
+        docker build "$GITHUB_WORKSPACE/" -f  "Dockerfile" -t ganesacr.azurecr.io/ganesclusternodeapp:${{ github.sha }}
+        docker push ganesacr.azurecr.io/ganesclusternodeapp:${{ github.sha }}
         
     - uses: azure/k8s-set-context@v1
       with:
@@ -54,6 +54,6 @@ jobs:
           manifests/deployment.yml
           manifests/service.yml
         images: |
-          ganesacr.azurecr.io/ganesClusterNodeApp:${{ github.sha }}
+          ganesacr.azurecr.io/ganesclusternodeapp:${{ github.sha }}
         imagepullsecrets: |
           ganesclusterdockerauth
