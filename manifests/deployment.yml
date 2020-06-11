@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: ganes-deploy
   labels:
-    app: nginx
+    app: ganescluster2
 spec:
   replicas: 3
   selector:
