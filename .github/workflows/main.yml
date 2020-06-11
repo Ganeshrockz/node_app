@@ -39,9 +39,17 @@ jobs:
          kubeconfig: ${{ secrets.aks_ganescluster_kubeConfig }}
       id: login
     
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep sampleganesnamespace | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace sampleganesnamespace`
+        fi
+        
     - uses: azure/k8s-create-secret@v1
       with:
-        namespace: ganesclusterd44c
+        namespace: sampleganesnamespace
         container-registry-url: ganesacr.azurecr.io
         container-registry-username: ${{ secrets.ganes_acr_username }}
         container-registry-password: ${{ secrets.ganes_acr_password }}
@@ -49,7 +57,7 @@ jobs:
       
     - uses: azure/k8s-deploy@v1
       with:
-        namespace: ganesclusterd44c
+        namespace: sampleganesnamespace
         manifests: |
           manifests/deployment.yml
           manifests/service.yml
