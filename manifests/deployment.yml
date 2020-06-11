@@ -12,6 +12,6 @@ spec:
     spec:
       containers:
         - name: "ganescluster2"
-          image: "ganesacr.azurecr.io/ganesClusterNodeApp"
+          image: "ganesacr.azurecr.io/ganesclusternodeapp"
           ports:
           - containerPort: 80
