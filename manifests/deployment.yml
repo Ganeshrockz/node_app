@@ -7,7 +7,7 @@ spec:
   replicas: 2
   selector:
       matchLabels:
-        name: "ganescluster2"
+        name: ganescluster2
   template:
     metadata:
       labels:
