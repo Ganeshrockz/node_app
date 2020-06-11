@@ -2,7 +2,7 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: "ganescluster2"
+  name: ganescluster2
 spec:
   replicas: 2
   selector:
@@ -11,10 +11,10 @@ spec:
   template:
     metadata:
       labels:
-        app: "ganescluster2"
+        app: ganescluster2
     spec:
       containers:
-        - name: "ganescluster2"
-          image: "ganesacr.azurecr.io/ganesclusternodeapp"
+        - name: ganescluster2
+          image: ganesacr.azurecr.io/ganesclusternodeapp
           ports:
           - containerPort: 80
