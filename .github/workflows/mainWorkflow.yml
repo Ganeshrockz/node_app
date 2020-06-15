@@ -60,6 +60,7 @@ jobs:
         namespace: sampleganesnamespace
         manifests: |
           manifests/deployment.yml
+          manifests/deployment2.yml
           manifests/service.yml
         images: |
           ganesacr.azurecr.io/ganesclusternodeapp:${{ github.sha }}
