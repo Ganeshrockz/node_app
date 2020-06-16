@@ -41,15 +41,15 @@ jobs:
     
     - name: Create namespace
       run: |
-        namespacePresent=`kubectl get namespace | grep sampleganesnamespace | wc -l`
+        namespacePresent=`kubectl get namespace | grep cluster-namespace | wc -l`
         if [ $namespacePresent -eq 0 ]
         then
-            echo `kubectl create namespace sampleganesnamespace`
+            echo `kubectl create namespace cluster-namespace`
         fi
         
     - uses: azure/k8s-create-secret@v1
       with:
-        namespace: sampleganesnamespace
+        namespace: cluster-namespace
         container-registry-url: ganesacr.azurecr.io
         container-registry-username: ${{ secrets.ganes_acr_username }}
         container-registry-password: ${{ secrets.ganes_acr_password }}
@@ -57,10 +57,9 @@ jobs:
       
     - uses: azure/k8s-deploy@users/koushdey/addAnnotationsResourceView
       with:
-        namespace: sampleganesnamespace
+        namespace: cluster-namespace
         manifests: |
           manifests/deployment.yml
-          manifests/deployment2.yml
           manifests/service.yml
         images: |
           ganesacr.azurecr.io/ganesclusternodeapp:${{ github.sha }}
