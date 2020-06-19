@@ -1,16 +1,21 @@
-apiVersion : apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "ganescluster2-6f7b"
+  name: ganes-deploy-part
+  labels:
+    app: ganescluster2
 spec:
-  replicas: 2
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
   template:
     metadata:
       labels:
-        app: "ganescluster2-6f7b"
+        app: nginx
     spec:
       containers:
-        - name: "ganescluster2-6f7b"
-          image: "ganesacr.azurecr.io/ganescluster2"
-          ports:
-          - containerPort: 80
+      - name: nginx
+        image: ganesacr.azurecr.io/ganesclusternodeapp
+        ports:
+        - containerPort: 80
