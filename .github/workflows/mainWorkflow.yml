@@ -36,7 +36,7 @@ jobs:
         
     - uses: azure/k8s-set-context@v1
       with:
-         kubeconfig: ${{ secrets.aks_ganescluster_kubeConfig }}
+         kubeconfig: ${{ secrets.aks_ganescluster2_kubeConfig }}
       id: login
     
     - name: Create namespace
@@ -55,7 +55,7 @@ jobs:
         container-registry-password: ${{ secrets.ganes_acr_password }}
         secret-name: ganesclusterdockerauth
       
-    - uses: azure/k8s-deploy@users/koushdey/addAnnotationsResourceView
+    - uses: azure/k8s-deploy@v1.1.0
       with:
         namespace: cluster-aks
         manifests: |
