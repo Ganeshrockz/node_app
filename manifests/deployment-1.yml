@@ -19,3 +19,20 @@ spec:
         image: ganesacr.azurecr.io/ganesclusternodeapp
         ports:
         - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: "ganescluster2-6f7b"
+    labels:
+        app: "ganescluster2-6f7b"
+spec:
+    type: LoadBalancer
+    ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+    selector:
+        app: "ganes-deploy-part"
+
