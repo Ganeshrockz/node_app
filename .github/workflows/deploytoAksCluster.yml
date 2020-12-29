@@ -38,7 +38,7 @@ jobs:
         container-registry-password: ${{ secrets.acr_ganesacr_password }}
         secret-name: ganesclusterdockerauth
        
-    - uses: azure/k8s-deploy@users/koushdey/addAnnotationsResourceView
+    - uses: azure/k8s-deploy@ganeshrockz/feature/traceability
       with:
         namespace: ganescluster20c94
         manifests: |
